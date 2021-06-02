@@ -1,0 +1,1192 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Asset Tracking System API",
+        "description": "Asset Tracking System For Sona ComStar",
+        "version": "0.0.1-SNAPSHOT"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Generated server url"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "paths": {
+        "/api/user-management/user-status-update": {
+            "post": {
+                "tags": [
+                    "user-management"
+                ],
+                "summary": "Updates the status of User",
+                "operationId": "processStatusChangeRequest",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StatusUpdateModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Notification: Successfully Changed Status Of User",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user-management/user-new": {
+            "post": {
+                "tags": [
+                    "user-management"
+                ],
+                "summary": "Creates a new User If it does not already exists",
+                "operationId": "processNewUserRequest",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUserPayload"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Notification: Successfully Created User",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tag-management/tag-unmapping": {
+            "post": {
+                "tags": [
+                    "tag-management"
+                ],
+                "summary": "Unmaps a tag",
+                "operationId": "processUnMappingRequest",
+                "parameters": [
+                    {
+                        "name": "tag-id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Notification: Sucessfully UnMapped Tag",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tag-management/tag-status-update": {
+            "post": {
+                "tags": [
+                    "tag-management"
+                ],
+                "summary": "Updates the status of Tag",
+                "operationId": "processStatusChangeRequest_1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StatusUpdateModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Notification: Sucessfully Updated Tag Status",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tag-management/tag-new": {
+            "post": {
+                "tags": [
+                    "tag-management"
+                ],
+                "summary": "Creates a new Tag If it does not already exists",
+                "operationId": "processNewTagRequest",
+                "parameters": [
+                    {
+                        "name": "tag-id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Notification: Successfully Created Tag",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tag-management/tag-mapping": {
+            "post": {
+                "tags": [
+                    "tag-management"
+                ],
+                "summary": "Maps an active tag",
+                "operationId": "processMappingRequest",
+                "parameters": [
+                    {
+                        "name": "tag-id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "asset-num",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Notification: Sucessfully Mapped Tag",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/location-management/location-status-update": {
+            "post": {
+                "tags": [
+                    "location-management"
+                ],
+                "summary": "Updates the status of Location",
+                "operationId": "processStatusChangeRequest_2",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StatusUpdateModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Notification: Successfully Changed Status Of Location",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/location-management/location-new": {
+            "post": {
+                "tags": [
+                    "location-management"
+                ],
+                "summary": "Creates a new Location If it does not already exists",
+                "operationId": "processNewLocationRequest",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateLocationPayload"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Notification: Successfully Created Location",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/reset-password": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "summary": "Works on the reset token generated via forgot password",
+                "operationId": "processResetPassword",
+                "parameters": [
+                    {
+                        "name": "reset-token",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "new-password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Notification: You have successfully changed your password.",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/profile/change-password": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "summary": "Handles Password change request of logged in user (sent via interface)",
+                "operationId": "changepassword",
+                "parameters": [
+                    {
+                        "name": "old-password",
+                        "in": "query",
+                        "description": "Old Password for verification",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "new-password",
+                        "in": "query",
+                        "description": "New Password to be set for the user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "You have successfully changed your password.",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "summary": "Initiates Login Process",
+                "operationId": "processAuthRequest",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Returns the token to be used in 'Authorization' Header",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponse"
+                                },
+                                "example": "{token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoaW1zQHRlc3QuY29tIiwiZXhwIjoxNjIyNzAyODM4LCJpYXQiOjE2MjI2MTY0Mzh9.PuuhX6t9PcsH0YaMvxHXZDpQMzjNN35-ddkbl8JWHlg}"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/forgot-password": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "summary": "Generates Reset Password Token for the User",
+                "operationId": "processForgotPassword",
+                "responses": {
+                    "200": {
+                        "description": "Notification: We have sent a reset password link to your email. Please check.",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/asset-management/movement-intransit": {
+            "post": {
+                "tags": [
+                    "asset-management"
+                ],
+                "summary": "Starts the movement process. Changes the status of movement to In-Transit",
+                "operationId": "processMovementInTransitRequest",
+                "parameters": [
+                    {
+                        "name": "movement-id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Notification: Successfully Changed Asset Movement Status To In-Transit",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/asset-management/movement-initiate": {
+            "post": {
+                "tags": [
+                    "asset-management"
+                ],
+                "summary": "Initiates movement request for an asset in the location",
+                "operationId": "processMovementInitiateRequest",
+                "parameters": [
+                    {
+                        "name": "asset-num",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "loc-name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Notification: Sucessfully initiated Asset Movement",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/asset-management/movement-complete": {
+            "post": {
+                "tags": [
+                    "asset-management"
+                ],
+                "summary": "Completes the movement request",
+                "operationId": "processMovementCompleteRequest",
+                "parameters": [
+                    {
+                        "name": "movement-id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Notification: Sucessfully Completed Asset Movement",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/asset-management/movement-approve": {
+            "post": {
+                "tags": [
+                    "asset-management"
+                ],
+                "summary": "Approves a given asset movement request",
+                "operationId": "processMovementApproveRequest",
+                "parameters": [
+                    {
+                        "name": "movement-id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Notification: Sucessfully Approved Asset Movement",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/asset-management/asset-update": {
+            "post": {
+                "tags": [
+                    "asset-management"
+                ],
+                "summary": "Updates Asset Data If it exists",
+                "operationId": "processUpdateAssetRequest",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateAssetPayload"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Notification: Successfully Updated Asset Data",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/asset-management/asset-new": {
+            "post": {
+                "tags": [
+                    "asset-management"
+                ],
+                "summary": "Creates a new Asset If it does not already exists",
+                "operationId": "processNewAssetRequest",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAssetPayload"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Notification: Successfully Created Asset",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/asset-management/asset-decommission": {
+            "post": {
+                "tags": [
+                    "asset-management"
+                ],
+                "summary": "Decommission an existing Asset",
+                "operationId": "processDecommissionRequest",
+                "parameters": [
+                    {
+                        "name": "asset-num",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Notification: Successfully Decommissioned Asset",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user-management/user-list-inactive": {
+            "get": {
+                "tags": [
+                    "user-management"
+                ],
+                "summary": "Fetch List of Inactive User",
+                "operationId": "fetchInactiveUsersList",
+                "responses": {
+                    "200": {
+                        "description": "List of Inactive Users Data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/UserData"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user-management/user-list-active": {
+            "get": {
+                "tags": [
+                    "user-management"
+                ],
+                "summary": "Fetch List of Active User",
+                "operationId": "fetchActiveUsersList",
+                "responses": {
+                    "200": {
+                        "description": "List of Active Users Data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/UserData"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tag-management/tag-list-unmapped": {
+            "get": {
+                "tags": [
+                    "tag-management"
+                ],
+                "summary": "Fetch List of Unmapped Tags",
+                "operationId": "fetchUnmappedTagsList",
+                "responses": {
+                    "200": {
+                        "description": "List of Unmapped Tags Data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TagData"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tag-management/tag-list-mapped": {
+            "get": {
+                "tags": [
+                    "tag-management"
+                ],
+                "summary": "Fetch List of Mapped Tags",
+                "operationId": "fetchMappedTagsList",
+                "responses": {
+                    "200": {
+                        "description": "List of Mapped Tags Data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TagData"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/location-management/location-list-inactive": {
+            "get": {
+                "tags": [
+                    "location-management"
+                ],
+                "summary": "Fetch List of Active Locations",
+                "operationId": "fetchActiveLocationsList",
+                "responses": {
+                    "200": {
+                        "description": "List of Active Location Data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LocationData"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/location-management/location-list-active": {
+            "get": {
+                "tags": [
+                    "location-management"
+                ],
+                "summary": "Fetch List of Inactive Locations",
+                "operationId": "fetchInactiveLocationsList",
+                "responses": {
+                    "200": {
+                        "description": "List of Location Inactive Data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LocationData"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/location-management/location-data": {
+            "get": {
+                "tags": [
+                    "location-management"
+                ],
+                "summary": "Fetch Location Data via Location Name",
+                "operationId": "showLocationData",
+                "parameters": [
+                    {
+                        "name": "loc-name",
+                        "in": "query",
+                        "description": "Name of Location",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Location Data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LocationData"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/asset-management/asset-list-decommissioned": {
+            "get": {
+                "tags": [
+                    "asset-management"
+                ],
+                "summary": "Fetch List of Decommissioned Assets",
+                "operationId": "fetchDecommissionedAssetsList",
+                "responses": {
+                    "200": {
+                        "description": "List of Decommissioned Assets Data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AssetMinimal"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/asset-management/asset-list-active": {
+            "get": {
+                "tags": [
+                    "asset-management"
+                ],
+                "summary": "Fetch List of Active Assets",
+                "operationId": "fetchActiveAssetsList",
+                "responses": {
+                    "200": {
+                        "description": "List of Active Assets Data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AssetMinimal"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/asset-management/asset-data": {
+            "get": {
+                "tags": [
+                    "asset-management"
+                ],
+                "summary": "Fetch Asset Data via Asset Number",
+                "operationId": "viewAssetData",
+                "parameters": [
+                    {
+                        "name": "asset-num",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Asset Data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AssetData"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "StatusUpdateModel": {
+                "type": "object",
+                "properties": {
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "CreateUserPayload": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "userType": {
+                        "type": "string"
+                    },
+                    "firstname": {
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "locName": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CreateLocationPayload": {
+                "type": "object",
+                "properties": {
+                    "locationName": {
+                        "type": "string"
+                    },
+                    "locationAddress": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "AuthRequest": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AuthResponse": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UpdateAssetPayload": {
+                "type": "object",
+                "properties": {
+                    "assetNum": {
+                        "type": "string"
+                    },
+                    "mapped": {
+                        "type": "boolean"
+                    },
+                    "movable": {
+                        "type": "boolean"
+                    },
+                    "tagIdentifier": {
+                        "type": "string"
+                    },
+                    "invoiceValue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "deprecatedValue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "reinstatedValue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "fairMarketValue": {
+                        "type": "number",
+                        "format": "float"
+                    }
+                }
+            },
+            "CreateAssetPayload": {
+                "type": "object",
+                "properties": {
+                    "assetNum": {
+                        "type": "string"
+                    },
+                    "machineNo": {
+                        "type": "string"
+                    },
+                    "sapID": {
+                        "type": "string"
+                    },
+                    "mapped": {
+                        "type": "boolean"
+                    },
+                    "movable": {
+                        "type": "boolean"
+                    },
+                    "invoiceValue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "deprecatedValue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "reinstatedValue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "fairMarketValue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "capitalizedDate": {
+                        "type": "string"
+                    },
+                    "tagIdentifier": {
+                        "type": "string"
+                    },
+                    "locName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserData": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "userType": {
+                        "type": "string"
+                    },
+                    "firstname": {
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "locName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "TagData": {
+                "type": "object",
+                "properties": {
+                    "tagID": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "mapped": {
+                        "type": "boolean"
+                    },
+                    "asset": {
+                        "type": "string"
+                    }
+                }
+            },
+            "LocationData": {
+                "type": "object",
+                "properties": {
+                    "locationName": {
+                        "type": "string"
+                    },
+                    "locationAddress": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "AssetMinimal": {
+                "type": "object",
+                "properties": {
+                    "assetNum": {
+                        "type": "string"
+                    },
+                    "machineNo": {
+                        "type": "string"
+                    },
+                    "sapID": {
+                        "type": "string"
+                    },
+                    "mapped": {
+                        "type": "boolean"
+                    },
+                    "movable": {
+                        "type": "boolean"
+                    },
+                    "tagIdentifier": {
+                        "type": "string"
+                    },
+                    "locName": {
+                        "type": "string"
+                    },
+                    "capitalizedDate": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AssetData": {
+                "type": "object",
+                "properties": {
+                    "assetNum": {
+                        "type": "string"
+                    },
+                    "machineNo": {
+                        "type": "string"
+                    },
+                    "sapID": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "mapped": {
+                        "type": "boolean"
+                    },
+                    "movable": {
+                        "type": "boolean"
+                    },
+                    "tagIdentifier": {
+                        "type": "string"
+                    },
+                    "invoiceValue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "deprecatedValue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "reinstatedValue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "fairMarketValue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "capitalizedDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "decommissionedDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "currentLocation": {
+                        "type": "string"
+                    },
+                    "createdLocation": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
